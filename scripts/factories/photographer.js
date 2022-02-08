@@ -13,5 +13,22 @@ function photographerFactory(data) {
     article.appendChild(h2);
     return article;
   }
-  return { name, picture, getUserCardDOM };
+
+  function getDataForPagePhotographer() {
+    const photographerHeader = document.querySelector(".photograph-header");
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    const h2 = document.createElement("h2");
+    const divImg = document.createElement("div");
+    const divText = document.createElement("div");
+    divImg.classList.add("photographer-photo");
+    divText.classList.add("photographer-info");
+    h2.textContent = name;
+    photographerHeader.appendChild(divImg);
+    divImg.appendChild(img);
+    photographerHeader.appendChild(divText);
+    divText.appendChild(h2);
+    return photographerHeader;
+  }
+  return { name, picture, getUserCardDOM, getDataForPagePhotographer };
 }
