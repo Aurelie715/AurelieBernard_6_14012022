@@ -47,6 +47,46 @@
   font-size: 18px;
 }
 
+.photograph-media {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 100px;
+}
+
+.photographer-media {
+  width: 350px;
+}
+
+.media-image img,
+.media-image video {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.media-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.like-number,
+.media-title {
+  margin-block-start: 10px;
+  margin-block-end: 30px;
+  font-size: 24px;
+  color: #901c1c;
+}
+
+.media-like {
+  display: flex;
+}
+
+.like-number {
+  font-weight: 500;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;

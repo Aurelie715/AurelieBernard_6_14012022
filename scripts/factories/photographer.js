@@ -14,7 +14,7 @@ function photographerFactory(data) {
     return article;
   }
 
-  function getDataForPagePhotographer() {
+  function getPhotographerPageHeader() {
     const photographerHeader = document.querySelector(".photograph-header");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
@@ -30,5 +30,5 @@ function photographerFactory(data) {
     divText.appendChild(h2);
     return photographerHeader;
   }
-  return { name, picture, getUserCardDOM, getDataForPagePhotographer };
+  return { name, picture, getUserCardDOM, getPhotographerPageHeader };
 }
