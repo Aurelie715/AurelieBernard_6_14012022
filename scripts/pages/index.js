@@ -1,5 +1,5 @@
 async function getPhotographers() {
-  const response = await fetch("/data/photographers.json");
+  const response = await fetch("./data/photographers.json");
   return await response.json();
 }
 
@@ -39,7 +39,7 @@ async function init() {
 }
 
 function redirectToPhotographer(id) {
-  window.location.href = `/photographer.html?id=${id}`;
+  window.location.href = `photographer.html?id=${id}`;
 }
 
 init();

@@ -3,7 +3,7 @@ const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
 
 async function getdata() {
-  const response = await fetch("/data/photographers.json");
+  const response = await fetch("./data/photographers.json");
   return await response.json();
 }
 
