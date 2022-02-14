@@ -17,6 +17,10 @@ async function displayData() {
   buildHeader(photographer);
 
   buildMedia(medias);
+
+  calculateTotalLikes(medias);
+
+  buildAside(medias, photographer);
 }
 
 function buildHeader(photographer) {
@@ -64,6 +68,32 @@ function buildMedia(medias) {
       templatePhotographerMedia
     );
   });
+}
+
+function calculateTotalLikes (medias) {
+  let sumOfLikes = 0;
+  medias.forEach((media) => {
+    const { likes } = media;
+    sumOfLikes += likes;
+  })
+  return sumOfLikes;
+}
+
+function buildAside (medias, photographer) {
+  const photographLikeAside = document.querySelector(".photograph-like");
+  const price = photographer.price;
+  const likes = calculateTotalLikes(medias);
+  const templateAside = `
+    <div class="total-like">
+      <p class="like-totalnumber">${likes}</p>
+      <i class="fa-solid fa-heart"></i>
+    </div>
+    <p class="salary-per-day">${price}€ / jour</p>
+  `
+  photographLikeAside.insertAdjacentHTML(
+    "beforeend",
+    templateAside
+  );
 }
 
 displayData();

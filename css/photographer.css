@@ -72,7 +72,8 @@
 }
 
 .like-number,
-.media-title {
+.media-title,
+.like-icon {
   margin-block-start: 10px;
   margin-block-end: 30px;
   font-size: 24px;
@@ -85,6 +86,34 @@
 
 .like-number {
   font-weight: 500;
+}
+
+.like-icon {
+  margin-left: 6px;
+}
+
+.photograph-like {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  right: 36px;
+  width: 376px;
+  height: 70px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.total-like {
+  display: flex;
+  align-items: center;
+}
+
+.like-totalnumber {
+  margin-right: 6px;
 }
 
 .contact_button {
