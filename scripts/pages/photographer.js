@@ -1,6 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
 const params = new URL(document.location).searchParams;
 const id = parseInt(params.get("id"));
+let totalLikes = 0;
 
 async function getdata() {
   const response = await fetch("./data/photographers.json");
@@ -17,8 +18,6 @@ async function displayData() {
   buildHeader(photographer);
 
   buildMedia(medias);
-
-  calculateTotalLikes(medias);
 
   buildAside(medias, photographer);
 }
@@ -49,10 +48,10 @@ function buildMedia(medias) {
   const photographMediaSection = document.querySelector(".photograph-media");
   const mediaFactory = new MediaFactory();
   medias.forEach((media) => {
-    const { title, likes } = media;
+    const { title, likes, id } = media;
     const mediaHtml = mediaFactory.renderMedia(media);
     const templatePhotographerMedia = `
-        <article class="photographer-media">
+        <article class="photographer-media" id="media-${id}">
           <a href="#" class="media-image">${mediaHtml.outerHTML}</a>
           <div class="media-info">
             <p class="media-title">${title}</p>
@@ -67,7 +66,16 @@ function buildMedia(medias) {
       "beforeend",
       templatePhotographerMedia
     );
+    document.querySelector(`#media-${id} .like-icon`).addEventListener("click", likeMedia)
   });
+}
+
+function likeMedia (event) {
+  const button = event.currentTarget;
+  const likeText = button.previousElementSibling;
+  let likeNumber = parseInt(likeText.textContent);
+  likeText.textContent = ++likeNumber;
+  document.querySelector(".like-totalnumber").textContent = ++totalLikes;
 }
 
 function calculateTotalLikes (medias) {
@@ -82,10 +90,10 @@ function calculateTotalLikes (medias) {
 function buildAside (medias, photographer) {
   const photographLikeAside = document.querySelector(".photograph-like");
   const price = photographer.price;
-  const likes = calculateTotalLikes(medias);
+  totalLikes = calculateTotalLikes(medias);
   const templateAside = `
     <div class="total-like">
-      <p class="like-totalnumber">${likes}</p>
+      <p class="like-totalnumber">${totalLikes}</p>
       <i class="fa-solid fa-heart"></i>
     </div>
     <p class="salary-per-day">${price}€ / jour</p>
