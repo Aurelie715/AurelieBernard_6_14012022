@@ -130,6 +130,14 @@
   order: 2;
 }
 
+.dropdown-child.show {
+  display: block;
+}
+
+.dropdown-child {
+  display: none;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;

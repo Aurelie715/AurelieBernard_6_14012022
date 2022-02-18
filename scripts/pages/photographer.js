@@ -17,9 +17,13 @@ async function displayData() {
 
   buildHeader(photographer);
 
+  sortMedias(medias, "Popularité");
+
   buildMedia(medias);
 
   buildAside(medias, photographer);
+
+  openCloseDropdownButton(medias);
 }
 
 function buildHeader(photographer) {
@@ -47,6 +51,7 @@ function buildMedia(medias) {
   //modifier la classe .photograph-media
   const photographMediaSection = document.querySelector(".photograph-media");
   const mediaFactory = new MediaFactory();
+  photographMediaSection.innerHTML="";
   medias.forEach((media) => {
     const { title, likes, id } = media;
     const mediaHtml = mediaFactory.renderMedia(media);
@@ -66,11 +71,13 @@ function buildMedia(medias) {
       "beforeend",
       templatePhotographerMedia
     );
-    document.querySelector(`#media-${id} .like-icon`).addEventListener("click", likeMedia)
+    document
+      .querySelector(`#media-${id} .like-icon`)
+      .addEventListener("click", likeMedia);
   });
 }
 
-function likeMedia (event) {
+function likeMedia(event) {
   const button = event.currentTarget;
   const likeText = button.previousElementSibling;
   let likeNumber = parseInt(likeText.textContent);
@@ -78,16 +85,16 @@ function likeMedia (event) {
   document.querySelector(".like-totalnumber").textContent = ++totalLikes;
 }
 
-function calculateTotalLikes (medias) {
+function calculateTotalLikes(medias) {
   let sumOfLikes = 0;
   medias.forEach((media) => {
     const { likes } = media;
     sumOfLikes += likes;
-  })
+  });
   return sumOfLikes;
 }
 
-function buildAside (medias, photographer) {
+function buildAside(medias, photographer) {
   const photographLikeAside = document.querySelector(".photograph-like");
   const price = photographer.price;
   totalLikes = calculateTotalLikes(medias);
@@ -97,12 +104,64 @@ function buildAside (medias, photographer) {
       <i class="fa-solid fa-heart"></i>
     </div>
     <p class="salary-per-day">${price}€ / jour</p>
-  `
-  photographLikeAside.insertAdjacentHTML(
-    "beforeend",
-    templateAside
-  );
+  `;
+  photographLikeAside.insertAdjacentHTML("beforeend", templateAside);
 }
 
-displayData();
+function openCloseDropdownButton(medias) {
+  const dropdownMenu = document.querySelector(".dropdown-child");
+  const button = document.querySelector(".dropdown-button");
 
+
+  button.addEventListener("click", () => {
+    const style = window.getComputedStyle(dropdownMenu);
+    if (style.display === "none") {
+      dropdownMenu.classList.add("show");
+    } else {
+      dropdownMenu.classList.remove("show");
+    }
+    // dropdownMenu.classList.toggle('show', style.display === "none");
+  });
+
+  dropdownMenu.querySelectorAll("a").forEach((element) => {
+    element.addEventListener("click", (event) => {
+      event.preventDefault();
+      const oldButtonValue = button.textContent;
+      button.textContent = event.currentTarget.textContent;
+      event.currentTarget.textContent = oldButtonValue;
+      sortMedias(medias, button.textContent);
+      buildMedia(medias);
+    });
+  }); 
+}
+
+function sortMedias(medias, sortBy) {
+  switch (sortBy) {
+    case "Date" :
+      medias.sort((a, b) => new Date (a.date) - new Date (b.date));
+    break;
+    case "Titre" :
+      medias.sort((a, b) => {
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      });
+    break;
+    case "Popularité" :
+      medias.sort((a, b) => b.likes - a.likes);
+  }
+}
+
+// function sort (medias) {
+//   const buttonPopularity = document.querySelector(".dropdown-button");
+
+//   buttonPopularity.addEventListener("click", () => {
+
+//   })
+// }
+
+displayData();
