@@ -51,7 +51,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 100px;
+  margin: 58px 100px 100px 100px;
 }
 
 .photographer-media {
@@ -130,15 +130,112 @@
   order: 2;
 }
 
-.dropdown-child.show {
-  display: block;
+/* Bouton de tri */
+
+.dropdown,
+.dropdown.open {
+  margin-top: 10px;
+  display: flex;
+  margin-left: 100px;
+  align-items: baseline;
+  z-index: 99;
+}
+
+.sort-by-button {
+  position: relative;
+}
+
+.dropdown.open .dropdown-child {
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdown-child {
   display: none;
+  position: absolute;
+  top: 50px;
+  background-color: #901c1c;
+  width: 170px;
+  border-radius: 0 0 5px 5px;
+}
+
+.dropdown-child a {
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  font-size: 18px;
+  padding: 10px 0;
+  font-weight: 700;
+}
+
+.child-line {
+  width: 150px;
+}
+
+.dropdown .arrow-up {
+  display: none;
+}
+
+.dropdown.open .arrow-up {
+  display: inline-block;
+}
+
+.dropdown.open .arrow-down {
+  display: none;
+}
+
+.sort-by {
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 25px;
+}
+
+.dropdown .sort-by-button,
+.dropdown.open .sort-by-button {
+  display: flex;
+  flex-direction: column;
+  background-color: #901c1c;
+  border-radius: 5px;
+}
+
+.dropdown-button {
+  border: unset;
+  background-color: unset;
+  color: white;
+  padding: unset;
+  height: 55px;
+  width: 170px;
+  text-align: start;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.dropdown-button-text {
+  margin-left: 20px;
+}
+
+.fa-solid {
+  margin-right: 20px;
+}
+
+/* Modal formulaire de contact */
+.background-form {
+  display: none;
+  background-color: #c4c4c4;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.4;
 }
 
 .modal {
+  position: fixed;
+  top: 56px;
+  left: 350px;
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;
@@ -148,6 +245,8 @@
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  z-index: 1;
+  box-shadow: -10px 6px 50px #2c2c2c;
 }
 
 .modal header {
@@ -185,9 +284,20 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+form input,
+form textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 36px;
+  color: #b3b3b3;
+}
+
+form input[type="text" i] {
+  text-indent: 21px;
+}
+
+form textarea {
+  height: 170px;
 }

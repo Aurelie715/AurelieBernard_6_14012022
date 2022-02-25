@@ -79,10 +79,14 @@ function buildMedia(medias) {
 
 function likeMedia(event) {
   const button = event.currentTarget;
+  if (button.dataset.liked) {
+    return
+  }
   const likeText = button.previousElementSibling;
   let likeNumber = parseInt(likeText.textContent);
   likeText.textContent = ++likeNumber;
   document.querySelector(".like-totalnumber").textContent = ++totalLikes;
+  button.dataset.liked=true;
 }
 
 function calculateTotalLikes(medias) {
@@ -109,27 +113,26 @@ function buildAside(medias, photographer) {
 }
 
 function openCloseDropdownButton(medias) {
-  const dropdownMenu = document.querySelector(".dropdown-child");
-  const button = document.querySelector(".dropdown-button");
-
-
+  const dropdown = document.querySelector(".dropdown");
+  const button = dropdown.querySelector(".dropdown-button");
+  const buttonText = button.querySelector(".dropdown-button-text")
   button.addEventListener("click", () => {
-    const style = window.getComputedStyle(dropdownMenu);
-    if (style.display === "none") {
-      dropdownMenu.classList.add("show");
-    } else {
-      dropdownMenu.classList.remove("show");
-    }
-    // dropdownMenu.classList.toggle('show', style.display === "none");
+    // const style = window.getComputedStyle(dropdownChild);
+    // if (style.display === "none") {
+    //   dropdown.classList.add("open");
+    // } else {
+    //   dropdown.classList.remove("open");
+    // }
+    dropdown.classList.toggle('open');
   });
 
-  dropdownMenu.querySelectorAll("a").forEach((element) => {
+  dropdown.querySelectorAll("a").forEach((element) => {
     element.addEventListener("click", (event) => {
       event.preventDefault();
-      const oldButtonValue = button.textContent;
-      button.textContent = event.currentTarget.textContent;
+      const oldButtonValue = buttonText.textContent;
+      buttonText.textContent = event.currentTarget.textContent;
       event.currentTarget.textContent = oldButtonValue;
-      sortMedias(medias, button.textContent);
+      sortMedias(medias, buttonText.textContent);
       buildMedia(medias);
     });
   }); 
@@ -155,13 +158,5 @@ function sortMedias(medias, sortBy) {
       medias.sort((a, b) => b.likes - a.likes);
   }
 }
-
-// function sort (medias) {
-//   const buttonPopularity = document.querySelector(".dropdown-button");
-
-//   buttonPopularity.addEventListener("click", () => {
-
-//   })
-// }
 
 displayData();

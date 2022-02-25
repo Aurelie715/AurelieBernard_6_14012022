@@ -19,6 +19,7 @@
 </head>
 
 <body>
+  <div class="background-form"></div>
   <header>
     <img src="./assets/images/logo.png" class="logo" />
   </header>
@@ -27,12 +28,19 @@
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
     <div class="dropdown">
-      <button class="dropdown-button">Popularité</button>
-      <div class="dropdown-child">
-        <span></span>
-        <a href="#" class="sort-date">Date</a>
-        <span></span>
-        <a href="#" class="sort-title">Titre</a>
+      <p class="sort-by">Trier par</p>
+      <div class="sort-by-button">
+        <button class="dropdown-button">
+          <span class="dropdown-button-text">Popularité</span>
+          <i class="arrow-down fa-solid fa-angle-down"></i>
+          <i class="fa-solid fa-angle-up arrow-up"></i>
+        </button>
+        <div class="dropdown-child">
+          <hr class="child-line">
+          <a href="#" class="sort-date">Date</a>
+          <hr class="child-line">
+          <a href="#" class="sort-title">Titre</a>
+        </div>
       </div>
     </div>
     <section class="photograph-media"></section>
@@ -46,8 +54,14 @@
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" />
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message"></textarea>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
