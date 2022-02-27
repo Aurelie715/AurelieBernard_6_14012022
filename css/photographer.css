@@ -228,7 +228,6 @@
   height: 100vh;
   position: fixed;
   inset: 0;
-  z-index: 0;
   opacity: 0.4;
 }
 
@@ -239,29 +238,26 @@
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-  z-index: 1;
+  padding: 20px 35px 35px 35px;
   box-shadow: -10px 6px 50px #2c2c2c;
 }
 
-.modal header {
+.modal-header {
   justify-content: space-between;
   width: 100%;
+  align-items: baseline;
 }
 
-.modal header img {
+.modal-header img {
   cursor: pointer;
 }
 
-.modal header h2 {
+.modal-header h2 {
   font-size: 64px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 form {
@@ -269,6 +265,7 @@ form {
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 100px;
 }
 
 form label {
