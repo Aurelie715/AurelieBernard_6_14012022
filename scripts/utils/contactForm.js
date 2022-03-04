@@ -1,4 +1,4 @@
-const backgroundForm = document.querySelector(".background-form");
+const backgroundForm = document.querySelector(".background-modal");
 const modal = document.getElementById("contact_modal");
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");

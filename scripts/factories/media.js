@@ -22,7 +22,7 @@ class VideoFactory {
     createHTML(media) {
         const video = document.createElement('video');
         video.setAttribute('src', `assets/medias/${media.video}`);
-        video.setAttribute("controls", "controls");
+        // video.setAttribute("controls", "controls");
         return video;
     }
 }

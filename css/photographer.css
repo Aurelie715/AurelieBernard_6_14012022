@@ -90,6 +90,7 @@
 
 .like-icon {
   margin-left: 6px;
+  cursor: pointer;
 }
 
 .photograph-like {
@@ -143,6 +144,7 @@
 
 .sort-by-button {
   position: relative;
+  cursor: pointer;
 }
 
 .dropdown.open .dropdown-child {
@@ -211,6 +213,7 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .dropdown-button-text {
@@ -222,22 +225,23 @@
 }
 
 /* Modal formulaire de contact */
-.background-form {
+.background-modal {
   display: none;
   background-color: #c4c4c4;
-  height: 100vh;
+  /* height: 100vh; */
   position: fixed;
   inset: 0;
   opacity: 0.4;
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 56px;
-  left: 350px;
+  left: 25%;
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 670px;
+  height: 900px;
   padding: 20px 35px 35px 35px;
   box-shadow: -10px 6px 50px #2c2c2c;
 }
@@ -265,7 +269,7 @@ form {
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 
 form label {
@@ -297,4 +301,29 @@ form input[type="text" i] {
 
 form textarea {
   height: 170px;
+}
+
+/* lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: white;
+}
+
+.lightbox.show {
+  display: initial;
+}
+
+.lightbox-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-media img,
+.container-media video {
+  width: 1050px;
+  height: 900px;
+  object-fit: cover;
 }

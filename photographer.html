@@ -2,10 +2,10 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <title>Fisheye - photographe </title>
-  <link rel="icon" type="image/png" href="./assets/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title>Fisheye - photographe</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
   <link href="./css/style.css" rel="stylesheet" type="text/css" />
   <!-- <script src="https://kit.fontawesome.com/2c03516f22.js" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -16,17 +16,17 @@
   <script src="./scripts/factories/media.js" defer></script>
   <script src="./scripts/pages/photographer.js" defer></script>
   <script src="./scripts/utils/contactForm.js" defer></script>
-
 </head>
 
 <body>
-  <div class="background-form"></div>
   <header>
-    <img src="./assets/images/logo.png" class="logo" />
+    <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home page" />
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button" onclick="displayModal()">
+        Contactez-moi
+      </button>
     </div>
     <div class="dropdown">
       <p class="sort-by">Trier par</p>
@@ -37,9 +37,9 @@
           <i class="fa-solid fa-angle-up arrow-up"></i>
         </button>
         <div class="dropdown-child">
-          <hr class="child-line">
+          <hr class="child-line" />
           <a href="#" class="sort-date">Date</a>
-          <hr class="child-line">
+          <hr class="child-line" />
           <a href="#" class="sort-title">Titre</a>
         </div>
       </div>
@@ -47,6 +47,8 @@
     <section class="photograph-media"></section>
     <aside class="photograph-like"></aside>
   </main>
+
+  <div class="background-modal"></div>
   <div id="contact_modal">
     <div class="modal">
       <header class="modal-header">
@@ -60,7 +62,7 @@
           <label for="last">Nom</label>
           <input type="text" id="last" name="last" />
           <label for="email">Email</label>
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" />
           <label for="message">Votre message</label>
           <textarea name="message" id="message"></textarea>
         </div>
@@ -68,12 +70,20 @@
       </form>
     </div>
   </div>
+
   <div class="lightbox">
-    <button class="lightbox-close"></button>
-    <button class="lightbox-next"></button>
-    <button class="lightbox-prev"></button>
+    <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
     <div class="lightbox-container">
-      <img src="" alt="">
+      <button class="lightbox-prev">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+      <div class="container-media">
+        <div class="media-display"></div>
+        <h2 class="media-title"></h2>
+      </div>
+      <button class="lightbox-next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   </div>
 </body>

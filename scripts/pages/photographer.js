@@ -24,6 +24,8 @@ async function displayData() {
   buildAside(medias, photographer);
 
   openCloseDropdownButton(medias);
+
+  showLightbox();
 }
 
 function buildHeader(photographer) {
@@ -157,6 +159,29 @@ function sortMedias(medias, sortBy) {
     case "Popularité" :
       medias.sort((a, b) => b.likes - a.likes);
   }
+}
+
+function showLightbox () {
+  const Lightbox = document.querySelector(".lightbox");
+  const close = document.querySelector(".lightbox-close");
+  const mediaLinks = document.querySelectorAll(".photograph-media a");
+  const image = Lightbox.querySelector(".lightbox-container .media-display");
+  for (let link of mediaLinks) {
+    link.addEventListener("click", function(event){
+      event.preventDefault();
+
+      image.innerHTML = link.firstElementChild.outerHTML;
+
+      if (image.firstElementChild instanceof HTMLVideoElement) {
+        image.firstElementChild.controls = true;
+      }
+
+      Lightbox.classList.add("show");
+    });
+  }
+  close.addEventListener("click", function(){
+    Lightbox.classList.remove("show");
+  })
 }
 
 displayData();
