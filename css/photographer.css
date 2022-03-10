@@ -309,6 +309,7 @@ form textarea {
   position: fixed;
   inset: 0;
   background-color: white;
+  overflow: scroll;
 }
 
 .lightbox.show {
@@ -319,6 +320,7 @@ form textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 62px;
 }
 
 .container-media img,
@@ -326,4 +328,25 @@ form textarea {
   width: 1050px;
   height: 900px;
   object-fit: cover;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 0px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 77px;
+  right: 126px;
+}
+
+.lightbox i {
+  font-size: 48px;
+  color: #901c1c;
+  margin-left: 20px;
 }

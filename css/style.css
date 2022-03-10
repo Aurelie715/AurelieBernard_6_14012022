@@ -46,6 +46,11 @@ h1 {
   cursor: pointer;
 }
 
+/* .photographer_section article h2:focus,
+.photographer_section article img:focus {
+  border: solid 1px black ;
+} */
+
 .photographer_section article h2 {
   color: #d3573c;
   font-size: 36px;

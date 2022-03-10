@@ -14,6 +14,7 @@ class ImageFactory {
     createHTML(media) {
         const image = document.createElement('img');
         image.setAttribute('src', `assets/medias/${media.image}`);
+        image.setAttribute('alt', `assets/medias/${media.alt}`);
         return image;
     }
 }
@@ -21,8 +22,12 @@ class ImageFactory {
 class VideoFactory {
     createHTML(media) {
         const video = document.createElement('video');
-        video.setAttribute('src', `assets/medias/${media.video}`);
-        // video.setAttribute("controls", "controls");
+        video.removeAttribute("controls");
+        const source = document.createElement('source');
+        source.setAttribute('src', `assets/medias/${media.video}`);
+        source.setAttribute('type', 'video/mp4');
+        video.appendChild(source);
+        
         return video;
     }
 }

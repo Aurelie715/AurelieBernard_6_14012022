@@ -25,7 +25,7 @@ async function displayData() {
 
   openCloseDropdownButton(medias);
 
-  showLightbox();
+  initLightbox();
 }
 
 function buildHeader(photographer) {
@@ -53,7 +53,7 @@ function buildMedia(medias) {
   //modifier la classe .photograph-media
   const photographMediaSection = document.querySelector(".photograph-media");
   const mediaFactory = new MediaFactory();
-  photographMediaSection.innerHTML="";
+  photographMediaSection.innerHTML = "";
   medias.forEach((media) => {
     const { title, likes, id } = media;
     const mediaHtml = mediaFactory.renderMedia(media);
@@ -64,7 +64,7 @@ function buildMedia(medias) {
             <p class="media-title">${title}</p>
             <div class="media-like">
               <p class="like-number">${likes}</p>
-              <i class="like-icon fa-solid fa-heart"></i>
+              <i class="like-icon fa-solid fa-heart" aria-label="likes"></i>
             </div>
           </div>
         </article>
@@ -82,13 +82,13 @@ function buildMedia(medias) {
 function likeMedia(event) {
   const button = event.currentTarget;
   if (button.dataset.liked) {
-    return
+    return;
   }
   const likeText = button.previousElementSibling;
   let likeNumber = parseInt(likeText.textContent);
   likeText.textContent = ++likeNumber;
   document.querySelector(".like-totalnumber").textContent = ++totalLikes;
-  button.dataset.liked=true;
+  button.dataset.liked = true;
 }
 
 function calculateTotalLikes(medias) {
@@ -117,7 +117,7 @@ function buildAside(medias, photographer) {
 function openCloseDropdownButton(medias) {
   const dropdown = document.querySelector(".dropdown");
   const button = dropdown.querySelector(".dropdown-button");
-  const buttonText = button.querySelector(".dropdown-button-text")
+  const buttonText = button.querySelector(".dropdown-button-text");
   button.addEventListener("click", () => {
     // const style = window.getComputedStyle(dropdownChild);
     // if (style.display === "none") {
@@ -125,7 +125,7 @@ function openCloseDropdownButton(medias) {
     // } else {
     //   dropdown.classList.remove("open");
     // }
-    dropdown.classList.toggle('open');
+    dropdown.classList.toggle("open");
   });
 
   dropdown.querySelectorAll("a").forEach((element) => {
@@ -137,15 +137,15 @@ function openCloseDropdownButton(medias) {
       sortMedias(medias, buttonText.textContent);
       buildMedia(medias);
     });
-  }); 
+  });
 }
 
 function sortMedias(medias, sortBy) {
   switch (sortBy) {
-    case "Date" :
-      medias.sort((a, b) => new Date (a.date) - new Date (b.date));
-    break;
-    case "Titre" :
+    case "Date":
+      medias.sort((a, b) => new Date(a.date) - new Date(b.date));
+      break;
+    case "Titre":
       medias.sort((a, b) => {
         if (a.title > b.title) {
           return 1;
@@ -155,33 +155,67 @@ function sortMedias(medias, sortBy) {
         }
         return 0;
       });
-    break;
-    case "Popularité" :
+      break;
+    case "Popularité":
       medias.sort((a, b) => b.likes - a.likes);
   }
 }
 
-function showLightbox () {
-  const Lightbox = document.querySelector(".lightbox");
+function initLightbox() {
+  const lightbox = document.querySelector(".lightbox");
   const close = document.querySelector(".lightbox-close");
   const mediaLinks = document.querySelectorAll(".photograph-media a");
-  const image = Lightbox.querySelector(".lightbox-container .media-display");
+  const previous = lightbox.querySelector("lightbox-prev");
+  const next = lightbox.querySelector("lightbox-next");
   for (let link of mediaLinks) {
-    link.addEventListener("click", function(event){
+    link.addEventListener("click", function (event) {
       event.preventDefault();
 
-      image.innerHTML = link.firstElementChild.outerHTML;
+      slidePosition = Array.from(mediaLinks).indexOf(link) + 1;
+      displaySlide(link);
 
-      if (image.firstElementChild instanceof HTMLVideoElement) {
-        image.firstElementChild.controls = true;
-      }
-
-      Lightbox.classList.add("show");
+      lightbox.classList.add("show");
     });
   }
-  close.addEventListener("click", function(){
-    Lightbox.classList.remove("show");
-  })
+  close.addEventListener("click", function () {
+    lightbox.classList.remove("show");
+  });
+
+  SlideShow(1);
+}
+
+let slidePosition = 1;
+
+// forward/Back controls
+function plusSlides(n) {
+  SlideShow((slidePosition += n));
+}
+
+//  images controls
+function currentSlide(n) {
+  SlideShow((slidePosition = n));
+}
+
+function SlideShow(n) {
+  const slides = document.querySelectorAll(".media-image");
+  if (n > slides.length) {
+    slidePosition = 1;
+  } else if (n < 1) {
+    slidePosition = slides.length;
+  }
+  displaySlide(slides[slidePosition - 1]);
+}
+
+function displaySlide(link) {
+  const media = document.querySelector(".lightbox-container .media-display");
+  const titleMedia = document.querySelector(".lightbox-container .media-title");
+
+  media.innerHTML = link.firstElementChild.outerHTML;
+  titleMedia.innerHTML = link.nextElementSibling.firstElementChild.outerHTML;
+
+  if (media.firstElementChild instanceof HTMLVideoElement) {
+    media.firstElementChild.controls = true;
+  }
 }
 
 displayData();

@@ -20,7 +20,9 @@
 
 <body>
   <header>
-    <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    <a href="./index.html">
+      <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
   </header>
   <main id="main">
     <div class="photograph-header">
@@ -49,11 +51,11 @@
   </main>
 
   <div class="background-modal"></div>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog">
     <div class="modal">
       <header class="modal-header">
         <h2 class="modal-title"></h2>
-        <img src="./assets/icons/close.svg" onclick="closeModal()" />
+        <img src="./assets/icons/close.svg" onclick="closeModal()" alt="close" />
       </header>
       <form>
         <div>
@@ -66,24 +68,26 @@
           <label for="message">Votre message</label>
           <textarea name="message" id="message"></textarea>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button class="contact_button" type="submit">Envoyer</button>
       </form>
     </div>
   </div>
 
-  <div class="lightbox">
-    <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
+  <div class="lightbox" role="dialog">
+    <button class="lightbox-close"><i class="fa-solid fa-xmark" aria-label="close"></i></button>
     <div class="lightbox-container">
-      <button class="lightbox-prev">
+      <a class="lightbox-prev" onclick="plusSlides(-1)">
+
         <i class="fa-solid fa-angle-left"></i>
-      </button>
+      </a>
       <div class="container-media">
         <div class="media-display"></div>
         <h2 class="media-title"></h2>
       </div>
-      <button class="lightbox-next">
+      <a class="lightbox-next" onclick="plusSlides(1)">
+
         <i class="fa-solid fa-angle-right"></i>
-      </button>
+      </a>
     </div>
   </div>
 </body>
