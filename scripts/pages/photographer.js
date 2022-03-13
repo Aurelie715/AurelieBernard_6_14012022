@@ -64,7 +64,9 @@ function buildMedia(medias) {
             <p class="media-title">${title}</p>
             <div class="media-like">
               <p class="like-number">${likes}</p>
-              <em class="like-icon fa-solid fa-heart" aria-label="likes button" tabindex="0"></em>
+              <button class="button-like" type="button">
+                <em class="like-icon fa-solid fa-heart" aria-label="likes button"></em>
+              </button>
             </div>
           </div>
         </article>
@@ -74,7 +76,7 @@ function buildMedia(medias) {
       templatePhotographerMedia
     );
     document
-      .querySelector(`#media-${id} .like-icon`)
+      .querySelector(`#media-${id} .button-like`)
       .addEventListener("click", likeMedia);
   });
 }
@@ -119,13 +121,8 @@ function openCloseDropdownButton(medias) {
   const button = dropdown.querySelector(".dropdown-button");
   const buttonText = button.querySelector(".dropdown-button-text");
   button.addEventListener("click", () => {
-    // const style = window.getComputedStyle(dropdownChild);
-    // if (style.display === "none") {
-    //   dropdown.classList.add("open");
-    // } else {
-    //   dropdown.classList.remove("open");
-    // }
     dropdown.classList.toggle("open");
+    button.ariaExpanded = button.ariaExpanded === "false";
   });
 
   dropdown.querySelectorAll("a").forEach((element) => {

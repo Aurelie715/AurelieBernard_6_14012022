@@ -26,23 +26,23 @@
   </header>
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
-      <button class="contact_button">
+      <button class="contact_button" aria-label="Contact Me">
         Contactez-moi
       </button>
     </div>
     <div class="dropdown">
       <p class="sort-by">Trier par</p>
-      <div class="sort-by-button">
-        <button class="dropdown-button" type="button">
-          <span class="dropdown-button-text">Popularité</span>
+      <div class="sort-by-button" aria-haspopup="listbox" role="listbox">
+        <button class="dropdown-button" type="button" id="order by" role="button" aria-expanded="false">
+          <span class="dropdown-button-text" aria-selected="true" role="option">Popularité</span>
           <em class="arrow-down fa-solid fa-angle-down"></em>
           <em class="fa-solid fa-angle-up arrow-up"></em>
         </button>
-        <div class="dropdown-child">
+        <div class="dropdown-child" aria-labelledby="order by">
           <hr class="child-line" />
-          <a href="#" class="sort-date">Date</a>
+          <a href="#" class="sort-date" role="option">Date</a>
           <hr class="child-line" />
-          <a href="#" class="sort-title">Titre</a>
+          <a href="#" class="sort-title" role="option">Titre</a>
         </div>
       </div>
     </div>
@@ -76,15 +76,16 @@
   <div class="lightbox" role="dialog">
 
     <div class="lightbox-container">
-      <a class="lightbox-prev" href="#">
+      <a class="lightbox-prev" href="#" aria-label="Previous image">
         <em class="fa-solid fa-angle-left"></em>
       </a>
       <div class="container-media">
         <div class="media-display"></div>
         <h2 class="media-title"></h2>
       </div>
-      <button class="lightbox-close"><em class="fa-solid fa-xmark" aria-label="close"></em></button>
-      <a class="lightbox-next" href="#">
+      <button class="lightbox-close" aria-label="Close dialog"><em class="fa-solid fa-xmark"
+          aria-label="close"></em></button>
+      <a class="lightbox-next" href="#" aria-label="Next image">
         <em class="fa-solid fa-angle-right"></em>
       </a>
     </div>

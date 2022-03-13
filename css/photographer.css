@@ -88,6 +88,15 @@
   font-weight: 500;
 }
 
+.button-like {
+  border: unset;
+  background-color: unset;
+}
+
+.button-like .fa-solid {
+  margin-right: unset;
+}
+
 .like-icon {
   margin-left: 6px;
   cursor: pointer;
@@ -228,7 +237,6 @@
 .background-modal {
   display: none;
   background-color: #c4c4c4;
-  /* height: 100vh; */
   position: fixed;
   inset: 0;
   opacity: 0.4;
