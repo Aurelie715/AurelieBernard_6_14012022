@@ -30,6 +30,7 @@ function displayPhName() {
   document.querySelector(
     ".modal-title"
   ).innerHTML = `Contactez-moi <br> ${name.textContent}`;
+  modal.setAttribute("aria-labelledby", `Contactez-moi ${name.textContent}`);
 }
 
 // initialyse la modale

@@ -10,6 +10,7 @@ function photographerFactory(data) {
     const a = document.createElement("a");
     a.setAttribute("href", `./photographer.html?id=${id}`);
     a.setAttribute("role", "link");
+    a.setAttribute("aria-label", alt);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute("alt", altPicture);

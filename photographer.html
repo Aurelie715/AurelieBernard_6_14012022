@@ -55,7 +55,7 @@
     <div class="modal">
       <header class="modal-header">
         <h2 class="modal-title"></h2>
-        <img class="close-modal" src="./assets/icons/close.svg" alt="close" />
+        <img class="close-modal" src="./assets/icons/close.svg" alt="close contact form" />
       </header>
       <form>
         <div>
@@ -68,22 +68,21 @@
           <label for="message">Votre message</label>
           <textarea name="message" id="message"></textarea>
         </div>
-        <button class="contact_button" type="submit">Envoyer</button>
+        <button class="contact_button" type="submit" aria-label="send">Envoyer</button>
       </form>
     </div>
   </div>
 
-  <div class="lightbox" role="dialog">
-
+  <div class="lightbox" role="dialog" aria-label="image closeup view">
     <div class="lightbox-container">
-      <a class="lightbox-prev" href="#" aria-label="Previous image">
+      <a class="lightbox-prev" title="previous image" href="#" aria-label="Previous image">
         <em class="fa-solid fa-angle-left"></em>
       </a>
       <div class="container-media">
         <div class="media-display"></div>
         <h2 class="media-title"></h2>
       </div>
-      <button class="lightbox-close" aria-label="Close dialog"><em class="fa-solid fa-xmark"
+      <button class="lightbox-close" title="next image" aria-label="Close dialog"><em class="fa-solid fa-xmark"
           aria-label="close"></em></button>
       <a class="lightbox-next" href="#" aria-label="Next image">
         <em class="fa-solid fa-angle-right"></em>

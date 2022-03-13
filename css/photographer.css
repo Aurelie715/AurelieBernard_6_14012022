@@ -336,6 +336,7 @@ form textarea {
   width: 1050px;
   height: 900px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .lightbox-close,
@@ -349,6 +350,9 @@ form textarea {
 
 .lightbox-close {
   cursor: pointer;
+  position: absolute;
+  top: 77px;
+  right: 126px;
 }
 
 .lightbox em {

@@ -55,11 +55,11 @@ function buildMedia(medias) {
   const mediaFactory = new MediaFactory();
   photographMediaSection.innerHTML = "";
   medias.forEach((media) => {
-    const { title, likes, id } = media;
+    const { title, likes, id, alt } = media;
     const mediaHtml = mediaFactory.renderMedia(media);
     const templatePhotographerMedia = `
         <article class="photographer-media" id="media-${id}">
-          <a href="#" class="media-image">${mediaHtml.outerHTML}</a>
+          <a href="#" class="media-image" aria-label="${alt}, closeup view">${mediaHtml.outerHTML}</a>
           <div class="media-info">
             <p class="media-title">${title}</p>
             <div class="media-like">

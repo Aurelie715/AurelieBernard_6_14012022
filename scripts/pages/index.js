@@ -23,12 +23,6 @@ async function displayData(photographers) {
     userCardDOM.appendChild(p2);
     userCardDOM.appendChild(p3);
     photographersSection.appendChild(userCardDOM);
-    // userCardDOM
-    //   .querySelector("img")
-    //   .addEventListener("click", () => redirectToPhotographer(id));
-    // userCardDOM
-    //   .querySelector("h2")
-    //   .addEventListener("click", () => redirectToPhotographer(id));
   });
 }
 
@@ -37,9 +31,5 @@ async function init() {
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
-
-// function redirectToPhotographer(id) {
-//   window.location.href = `photographer.html?id=${id}`;
-// }
 
 init();

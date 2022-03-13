@@ -14,7 +14,7 @@ class ImageFactory {
   createHTML(media) {
     const image = document.createElement("img");
     image.setAttribute("src", `assets/medias/${media.image}`);
-    image.setAttribute("alt", `${media.alt}, closeup view`);
+    image.setAttribute("alt", `${media.alt}`);
     return image;
   }
 }
