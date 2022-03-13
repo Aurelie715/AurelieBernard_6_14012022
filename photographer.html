@@ -24,19 +24,19 @@
       <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home page" />
     </a>
   </header>
-  <main id="main">
+  <main id="main" aria-hidden="false">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">
+      <button class="contact_button">
         Contactez-moi
       </button>
     </div>
     <div class="dropdown">
       <p class="sort-by">Trier par</p>
       <div class="sort-by-button">
-        <button class="dropdown-button">
+        <button class="dropdown-button" type="button">
           <span class="dropdown-button-text">Popularité</span>
-          <i class="arrow-down fa-solid fa-angle-down"></i>
-          <i class="fa-solid fa-angle-up arrow-up"></i>
+          <em class="arrow-down fa-solid fa-angle-down"></em>
+          <em class="fa-solid fa-angle-up arrow-up"></em>
         </button>
         <div class="dropdown-child">
           <hr class="child-line" />
@@ -51,18 +51,18 @@
   </main>
 
   <div class="background-modal"></div>
-  <div id="contact_modal" role="dialog">
+  <div id="contact_modal" role="dialog" aria-hidden="true">
     <div class="modal">
       <header class="modal-header">
         <h2 class="modal-title"></h2>
-        <img src="./assets/icons/close.svg" onclick="closeModal()" alt="close" />
+        <img class="close-modal" src="./assets/icons/close.svg" alt="close" />
       </header>
       <form>
         <div>
-          <label for="first">Prénom</label>
-          <input type="text" id="first" name="first" />
-          <label for="last">Nom</label>
-          <input type="text" id="last" name="last" />
+          <label for="first_name">Prénom</label>
+          <input type="text" id="first_name" name="first_name" />
+          <label for="last_name">Nom</label>
+          <input type="text" id="last_name" name="last_name" />
           <label for="email">Email</label>
           <input type="email" id="email" name="email" />
           <label for="message">Votre message</label>
@@ -74,19 +74,18 @@
   </div>
 
   <div class="lightbox" role="dialog">
-    <button class="lightbox-close"><i class="fa-solid fa-xmark" aria-label="close"></i></button>
-    <div class="lightbox-container">
-      <a class="lightbox-prev" onclick="plusSlides(-1)">
 
-        <i class="fa-solid fa-angle-left"></i>
+    <div class="lightbox-container">
+      <a class="lightbox-prev" href="#">
+        <em class="fa-solid fa-angle-left"></em>
       </a>
       <div class="container-media">
         <div class="media-display"></div>
         <h2 class="media-title"></h2>
       </div>
-      <a class="lightbox-next" onclick="plusSlides(1)">
-
-        <i class="fa-solid fa-angle-right"></i>
+      <button class="lightbox-close"><em class="fa-solid fa-xmark" aria-label="close"></em></button>
+      <a class="lightbox-next" href="#">
+        <em class="fa-solid fa-angle-right"></em>
       </a>
     </div>
   </div>

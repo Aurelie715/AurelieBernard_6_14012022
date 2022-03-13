@@ -12,7 +12,7 @@ async function displayData(photographers) {
     const p = document.createElement("p");
     const p2 = document.createElement("p");
     const p3 = document.createElement("p");
-    const { city, country, tagline, price, id } = photographer;
+    const { city, country, tagline, price } = photographer;
     p.textContent = `${city}, ${country}`;
     p.classList.add("photographer-location");
     p2.textContent = tagline;
@@ -23,12 +23,12 @@ async function displayData(photographers) {
     userCardDOM.appendChild(p2);
     userCardDOM.appendChild(p3);
     photographersSection.appendChild(userCardDOM);
-    userCardDOM
-      .querySelector("img")
-      .addEventListener("click", () => redirectToPhotographer(id));
-    userCardDOM
-      .querySelector("h2")
-      .addEventListener("click", () => redirectToPhotographer(id));
+    // userCardDOM
+    //   .querySelector("img")
+    //   .addEventListener("click", () => redirectToPhotographer(id));
+    // userCardDOM
+    //   .querySelector("h2")
+    //   .addEventListener("click", () => redirectToPhotographer(id));
   });
 }
 
@@ -38,8 +38,8 @@ async function init() {
   displayData(photographers);
 }
 
-function redirectToPhotographer(id) {
-  window.location.href = `photographer.html?id=${id}`;
-}
+// function redirectToPhotographer(id) {
+//   window.location.href = `photographer.html?id=${id}`;
+// }
 
 init();

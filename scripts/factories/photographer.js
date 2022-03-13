@@ -1,19 +1,23 @@
+/* eslint-disable no-unused-vars */
 function photographerFactory(data) {
-  const { name, portrait, alt } = data;
+  const { name, portrait, alt, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
-  const altPicture = `assets/photographers/${alt}`;
+  const altPicture = `portrait ${alt}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
+    const a = document.createElement("a");
+    a.setAttribute("href", `./photographer.html?id=${id}`);
+    a.setAttribute("role", "link");
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute("alt", altPicture);
-    img.setAttribute("role", "button");
     const h2 = document.createElement("h2");
     h2.textContent = name;
-    article.appendChild(img);
-    article.appendChild(h2);
+    a.appendChild(img);
+    a.appendChild(h2);
+    article.appendChild(a);
     return article;
   }
 

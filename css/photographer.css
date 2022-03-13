@@ -340,12 +340,10 @@ form textarea {
 }
 
 .lightbox-close {
-  position: absolute;
-  top: 77px;
-  right: 126px;
+  cursor: pointer;
 }
 
-.lightbox i {
+.lightbox em {
   font-size: 48px;
   color: #901c1c;
   margin-left: 20px;

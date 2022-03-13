@@ -64,7 +64,7 @@ function buildMedia(medias) {
             <p class="media-title">${title}</p>
             <div class="media-like">
               <p class="like-number">${likes}</p>
-              <i class="like-icon fa-solid fa-heart" aria-label="likes"></i>
+              <em class="like-icon fa-solid fa-heart" aria-label="likes button" tabindex="0"></em>
             </div>
           </div>
         </article>
@@ -165,8 +165,10 @@ function initLightbox() {
   const lightbox = document.querySelector(".lightbox");
   const close = document.querySelector(".lightbox-close");
   const mediaLinks = document.querySelectorAll(".photograph-media a");
-  const previous = lightbox.querySelector("lightbox-prev");
-  const next = lightbox.querySelector("lightbox-next");
+  const previous = lightbox.querySelector(".lightbox-prev");
+  const next = lightbox.querySelector(".lightbox-next");
+  const main = document.getElementById("main");
+
   for (let link of mediaLinks) {
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -175,13 +177,38 @@ function initLightbox() {
       displaySlide(link);
 
       lightbox.classList.add("show");
+      main.setAttribute("aria-hidden", true);
+      lightbox.setAttribute("aria-hidden", false);
+
+      getTabbableElements(document).forEach(
+        (tabbable) => (tabbable.tabIndex = -1)
+      );
+      getTabbableElements(lightbox).forEach(
+        (tabbable) => (tabbable.tabIndex = 0)
+      );
     });
   }
   close.addEventListener("click", function () {
-    lightbox.classList.remove("show");
+    closeLightbox(lightbox);
+  });
+  previous.addEventListener("click", function () {
+    plusSlides(-1);
+  });
+  next.addEventListener("click", function () {
+    plusSlides(1);
+  });
+  document.addEventListener("keyup", (event) => {
+    if (lightbox.ariaHidden === "false" && event.key === "Escape") {
+      closeLightbox(lightbox);
+    }
   });
 
   SlideShow(1);
+}
+
+function closeLightbox(lightbox) {
+  lightbox.classList.remove("show");
+  getTabbableElements(document).forEach((tabbable) => (tabbable.tabIndex = 0));
 }
 
 let slidePosition = 1;

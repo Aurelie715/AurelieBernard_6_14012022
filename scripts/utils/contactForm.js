@@ -1,11 +1,13 @@
 const backgroundForm = document.querySelector(".background-modal");
 const modal = document.getElementById("contact_modal");
-const firstName = document.getElementById("first");
-const lastName = document.getElementById("last");
+const firstName = document.getElementById("first_name");
+const lastName = document.getElementById("last_name");
 const email = document.getElementById("email");
 const message = document.getElementById("message");
-const send = document.querySelector(".contact_button");
 const form = document.querySelector("form");
+const contactButton = document.querySelector(".contact_button");
+const closeButton = document.querySelector(".close-modal");
+const main = document.getElementById("main");
 
 async function getPhotographers() {
   const response = await fetch("./data/photographers.json");
@@ -18,23 +20,52 @@ async function displayData() {
     (photographer) => photographer.id === id
   );
 
-  displayPhName(photographer)
+  displayPhName(photographer);
+
+  initModal();
 }
 
 function displayPhName() {
-    const name = document.querySelector(".photographer-info > h2");
-    document.querySelector(".modal-title").innerHTML = `Contactez-moi <br> ${name.textContent}`;
+  const name = document.querySelector(".photographer-info > h2");
+  document.querySelector(
+    ".modal-title"
+  ).innerHTML = `Contactez-moi <br> ${name.textContent}`;
 }
 
+// initialyse la modale
+function initModal() {
+  contactButton.addEventListener("click", () => {
+    openModal();
+  });
+  closeButton.addEventListener("click", () => {
+    closeModal();
+  });
+  document.addEventListener("keyup", (event) => {
+    if (modal.ariaHidden === "false" && event.key === "Escape") {
+      closeModal();
+    }
+  });
+}
 
-function displayModal() {
+function openModal() {
+  main.setAttribute("aria-hidden", true);
+  modal.setAttribute("aria-hidden", false);
   modal.style.display = "block";
   backgroundForm.style.display = "block";
+  getTabbableElements(document).forEach((tabbable) => (tabbable.tabIndex = -1));
+  getTabbableElements(modal).forEach((tabbable) => (tabbable.tabIndex = 0));
 }
 
 function closeModal() {
   modal.style.display = "none";
   backgroundForm.style.display = "none";
+  getTabbableElements(document).forEach((tabbable) => (tabbable.tabIndex = 0));
+}
+
+function getTabbableElements(zone) {
+  return zone.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
 }
 
 form.addEventListener("submit", function (event) {
@@ -46,4 +77,4 @@ form.addEventListener("submit", function (event) {
   console.log(message.value);
 });
 
-displayData()
+displayData();
