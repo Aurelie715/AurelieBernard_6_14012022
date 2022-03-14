@@ -29,6 +29,7 @@ async function displayData() {
 }
 
 function buildHeader(photographer) {
+  // eslint-disable-next-line no-undef
   const factory = photographerFactory(photographer);
   const header = factory.getPhotographerPageHeader();
   const photographerInfos = header.querySelector(".photographer-info");
@@ -50,8 +51,8 @@ function buildHeader(photographer) {
 }
 
 function buildMedia(medias) {
-  //modifier la classe .photograph-media
   const photographMediaSection = document.querySelector(".photograph-media");
+  // eslint-disable-next-line no-undef
   const mediaFactory = new MediaFactory();
   photographMediaSection.innerHTML = "";
   medias.forEach((media) => {
@@ -177,9 +178,11 @@ function initLightbox() {
       main.setAttribute("aria-hidden", true);
       lightbox.setAttribute("aria-hidden", false);
 
+      // eslint-disable-next-line no-undef
       getTabbableElements(document).forEach(
         (tabbable) => (tabbable.tabIndex = -1)
       );
+      // eslint-disable-next-line no-undef
       getTabbableElements(lightbox).forEach(
         (tabbable) => (tabbable.tabIndex = 0)
       );
@@ -191,6 +194,11 @@ function initLightbox() {
   previous.addEventListener("click", function () {
     plusSlides(-1);
   });
+  // previous.addEventListener("keyup", (event) => {
+  //   if (lightbox.ariaHidden === "false" && event.key === "37") {
+  //     plusSlides(-1);
+  //   }
+  // });
   next.addEventListener("click", function () {
     plusSlides(1);
   });
@@ -205,6 +213,7 @@ function initLightbox() {
 
 function closeLightbox(lightbox) {
   lightbox.classList.remove("show");
+  // eslint-disable-next-line no-undef
   getTabbableElements(document).forEach((tabbable) => (tabbable.tabIndex = 0));
 }
 
@@ -213,11 +222,6 @@ let slidePosition = 1;
 // forward/Back controls
 function plusSlides(n) {
   SlideShow((slidePosition += n));
-}
-
-//  images controls
-function currentSlide(n) {
-  SlideShow((slidePosition = n));
 }
 
 function SlideShow(n) {

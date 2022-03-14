@@ -1,8 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 class MediaFactory {
   renderMedia(media) {
+    // eslint-disable-next-line no-prototype-builtins
     if (media.hasOwnProperty("image")) {
       return new ImageFactory().createHTML(media);
     }
+    // eslint-disable-next-line no-prototype-builtins
     if (media.hasOwnProperty("video")) {
       return new VideoFactory().createHTML(media);
     }
