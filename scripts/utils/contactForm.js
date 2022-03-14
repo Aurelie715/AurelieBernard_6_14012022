@@ -17,6 +17,7 @@ async function getPhotographers() {
 async function displayData() {
   const data = await getPhotographers();
   const photographer = data.photographers.find(
+    // eslint-disable-next-line no-undef
     (photographer) => photographer.id === id
   );
 
@@ -33,7 +34,6 @@ function displayPhName() {
   modal.setAttribute("aria-labelledby", `Contactez-moi ${name.textContent}`);
 }
 
-// initialyse la modale
 function initModal() {
   contactButton.addEventListener("click", () => {
     openModal();

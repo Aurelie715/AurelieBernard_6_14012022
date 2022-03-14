@@ -15,6 +15,7 @@
   <script src="./scripts/factories/photographer.js" defer></script>
   <script src="./scripts/factories/media.js" defer></script>
   <script src="./scripts/pages/photographer.js" defer></script>
+  <script src="./scripts/utils/lightbox.js" defer></script>
   <script src="./scripts/utils/contactForm.js" defer></script>
 </head>
 
@@ -30,11 +31,11 @@
         Contactez-moi
       </button>
     </div>
+    <!-- sort button -->
     <div class="dropdown">
       <p class="sort-by">Trier par</p>
       <div class="sort-by-button" aria-haspopup="listbox" role="listbox">
         <button class="dropdown-button" type="button" id="order-by" role="option" aria-selected="true">
-          <!-- aria-expanded="false" -->
           <span class="dropdown-button-text">Popularité</span>
           <em class="arrow-down fa-solid fa-angle-down"></em>
           <em class="fa-solid fa-angle-up arrow-up"></em>
@@ -50,7 +51,7 @@
     <section class="photograph-media"></section>
     <aside class="photograph-like"></aside>
   </main>
-
+  <!-- formulaire -->
   <div class="background-modal"></div>
   <div id="contact_modal" role="dialog" aria-hidden="true">
     <div class="modal">
@@ -73,7 +74,7 @@
       </form>
     </div>
   </div>
-
+  <!-- lightbox -->
   <div class="lightbox" role="dialog" aria-label="image closeup view">
     <div class="lightbox-container">
       <a class="lightbox-prev" title="previous image" href="#" aria-label="Previous image">
