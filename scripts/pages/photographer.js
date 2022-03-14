@@ -124,7 +124,6 @@ function openCloseDropdownButton(medias) {
   const buttonText = button.querySelector(".dropdown-button-text");
   button.addEventListener("click", () => {
     dropdown.classList.toggle("open");
-    // button.ariaExpanded = button.ariaExpanded === "false";
   });
 
   dropdown.querySelectorAll("a").forEach((element) => {
@@ -135,6 +134,7 @@ function openCloseDropdownButton(medias) {
       event.currentTarget.textContent = oldButtonValue;
       sortMedias(medias, buttonText.textContent);
       buildMedia(medias);
+      initLightboxLinks();
     });
   });
 }
